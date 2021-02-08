@@ -2,7 +2,17 @@
 
 Interface for adapters to work with async jobs on node.
 
+## Install
+
+```
+npm install @enviabybus/active-job-processor
+```
+
 ## Adapters
+
+[Bull Adapter](https://github.com/Enviabybus/node-active-job-processor-bull-adapter)
+
+[Google Cloud Tasks Adapter](https://github.com/Enviabybus/node-active-job-processor-cloud-tasks-adapter)
 
 ## Creating a job
 
@@ -31,7 +41,7 @@ import PingJob from './jobs/ping.job.ts'
 initActiveJobProcessor(path.resolve(__dirname, './jobs'));
 
 const adapter = new ActiveJobProcessorBullAdapter();
-const jobProcessor = new ActiveJobProcessor(bullAdapter);
+const jobProcessor = new ActiveJobProcessor(adapter);
 
 jobProcessor.performLater(PingJob, ['pong']);
 jobProcessor.performIn(5000, PingJob, ['pong']);
